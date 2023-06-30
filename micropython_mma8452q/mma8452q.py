@@ -5,7 +5,7 @@
 `mma8452q`
 ================================================================================
 
-MicroPython Drtiver for the NXP MMA8452Q Accelerometer
+MicroPython Driver for the NXP MMA8452Q Accelerometer
 
 
 * Author(s): Jose D. Montoya
