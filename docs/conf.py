@@ -10,14 +10,12 @@ import datetime
 
 sys.path.insert(0, os.path.abspath(".."))
 
-
 # -- General configuration ------------------------------------------------
 
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    "sphinx_immaterial",
 ]
 
 autodoc_preserve_defaults = True
@@ -27,7 +25,7 @@ intersphinx_mapping = {
     "MicroPython": ("https://docs.micropython.org/en/latest/", None),
 }
 
-# autodoc_mock_imports = ["digitalio", "busio"]
+autodoc_mock_imports = ["machine", "micropython"]
 autoclass_content = "both"
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -73,120 +71,39 @@ pygments_style = "sphinx"
 todo_include_todos = False
 todo_emit_warnings = False
 napoleon_numpy_docstring = False
-html_baseurl = "https://micropython-mma8452q.readthedocs.io/"
-rst_prolog = """
-.. role:: python(code)
-   :language: python
-   :class: highlight
-.. default-literal-role:: python
-"""
-html_theme = "sphinx_immaterial"
 
-html_theme_options = {
-    "features": [
-        "search.share",
-    ],
-    # Set the color and the accent color
-    "palette": [
-        {
-            "media": "(prefers-color-scheme: light)",
-            "scheme": "default",
-            "primary": "purple",
-            "accent": "light-blue",
-            "toggle": {
-                "icon": "material/lightbulb-outline",
-                "name": "Switch to dark mode",
-            },
-        },
-        {
-            "media": "(prefers-color-scheme: dark)",
-            "scheme": "slate",
-            "primary": "purple",
-            "accent": "light-blue",
-            "toggle": {
-                "icon": "material/lightbulb",
-                "name": "Switch to light mode",
-            },
-        },
-    ],
-    # Set the repo location to get a badge with stats
-    "repo_url": "https://github.com/jposada202020/MicroPython_MMA8452Q/",
-    "repo_name": "MicroPython MMA8452Q",
-    "social": [
-        {
-            "icon": "fontawesome/brands/github",
-            "link": "https://github.com/jposada202020/MicroPython_MMA8452Q",
-        },
-        {
-            "icon": "fontawesome/brands/python",
-            "link": "https://pypi.org/project/micropython-mma8452q/",
-        },
-        {
-            "name": "MicroPython Downloads",
-            "icon": "octicons/download-24",
-            "link": "https://micropython.org",
-        },
-    ],
-}
-html_favicon = "_static/favicon.ico"
+# -- Options for HTML output ----------------------------------------------
 
-# Output file base name for HTML help builder.
-htmlhelp_basename = "MicroPython_Mma8452q_Librarydoc"
+# The theme to use for HTML and HTML Help pages.  See the documentation for
+# a list of builtin themes.
+#
+on_rtd = os.environ.get("READTHEDOCS", None) == "True"
 
-sphinx_immaterial_custom_admonitions = [
-    {
-        "name": "warning",
-        "color": (255, 66, 66),
-        "icon": "octicons/alert-24",
-        "override": True,
-    },
-    {
-        "name": "note",
-        "icon": "octicons/pencil-24",
-        "override": True,
-    },
-    {
-        "name": "seealso",
-        "color": (255, 66, 252),
-        "icon": "octicons/eye-24",
-        "title": "See Also",
-        "override": True,
-    },
-    {
-        "name": "hint",
-        "icon": "material/school",
-        "override": True,
-    },
-    {
-        "name": "tip",
-        "icon": "material/school",
-        "override": True,
-    },
-    {
-        "name": "important",
-        "icon": "material/school",
-        "override": True,
-    },
-]
-python_type_aliases = {
-    "DigitalInOut": "digitalio.DigitalInOut",
-}
+if not on_rtd:  # only import and set the theme if we're building docs locally
+    try:
+        import sphinx_rtd_theme
 
-object_description_options = [
-    ("py:.*", dict(generate_synopses="first_sentence")),
-]
-# Set link name generated in the top bar.
-html_title = "MicroPython MMA8452Q"
+        html_theme = "sphinx_rtd_theme"
+        html_theme_path = [sphinx_rtd_theme.get_html_theme_path(), "."]
+    except:
+        html_theme = "default"
+        html_theme_path = ["."]
+else:
+    html_theme_path = ["."]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
-# These paths are either relative to html_static_path
-# or fully qualified paths (eg. https://...)
-html_css_files = ["extra_css.css"]
+# The name of an image file (relative to this directory) to use as a favicon of
+# the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
+# pixels large.
+#
+html_favicon = "_static/favicon.ico"
 
+# Output file base name for HTML help builder.
+htmlhelp_basename = "MicroPython_MMA8452Q_Librarydoc"
 
 # -- Options for LaTeX output ---------------------------------------------
 
