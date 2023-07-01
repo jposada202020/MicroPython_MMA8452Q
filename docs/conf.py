@@ -10,22 +10,6 @@ import datetime
 
 sys.path.insert(0, os.path.abspath(".."))
 
-try:
-    # Inject mock modules so that we can build the
-    # documentation without having the real stuff available
-    from mock import Mock
-
-    to_be_mocked = [
-        "micropython",
-        "machine",
-    ]
-    for module in to_be_mocked:
-        sys.modules[module] = Mock()
-        print("Mocked '{}' module".format(module))
-
-    import micropython_mma8452q
-except ImportError:
-    raise SystemExit("micropython_mma8452q has to be importable")
 
 # -- General configuration ------------------------------------------------
 
@@ -33,7 +17,6 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    "sphinx.ext.viewcode",
     "sphinx_immaterial",
 ]
 
