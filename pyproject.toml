@@ -21,11 +21,9 @@ urls = {Homepage = "https://github.com/jposada202020/MicroPython_MMA8452Q"}
 keywords = [
     "sensor",
     "micropython",
-    "mma8452q",
     "acceleration",
     "accelerometer",
     "nxp",
-    "micropython",
     "mma8452q",
 ]
 license = {text = "MIT"}

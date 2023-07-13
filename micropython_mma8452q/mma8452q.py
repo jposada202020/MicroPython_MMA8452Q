@@ -102,6 +102,8 @@ class MMA8452Q:
 
     .. code-block:: python
 
+        magx, magy, magz = mma8452q.acceleration
+
     """
 
     _device_id = RegisterStruct(_REG_WHOAMI, "B")
